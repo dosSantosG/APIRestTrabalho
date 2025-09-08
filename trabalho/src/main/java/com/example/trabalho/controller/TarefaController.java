@@ -39,7 +39,10 @@ public class TarefaController {
 	public Tarefa create(@RequestBody Tarefa tarefa) {
 		return repository.save(tarefa);
 	}
-
+	@PostMapping("/batch")
+	public List<Tarefa> createMultiple(@RequestBody List<Tarefa> tarefas) {
+	    return repository.saveAll(tarefas);
+	}
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Tarefa tarefa) {
 		return repository.findById(id).map(record -> {
