@@ -58,7 +58,7 @@ public class TarefaController {
 	public ResponseEntity<?> delete(@PathVariable long id) {
 		return repository.findById(id).map(record -> {
 			repository.deleteById(id);
-			return ResponseEntity.ok(record);
+			return ResponseEntity.ok().build();
 		}).orElse(ResponseEntity.notFound().build());
 	}
 
